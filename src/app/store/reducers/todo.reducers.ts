@@ -13,15 +13,6 @@ export interface TodosState {
 
 export const initialState: TodosState = {
   todos: [
-    {
-      id: '1',
-
-      title: 'Todo 1',
-
-      completed: false,
-
-      userId: 1,
-    },
   ],
 };
 
