@@ -15,3 +15,8 @@ export const removeTodo = createAction(
   '[Todos] Remove Todo',
   props<{ id: string }>()
 );
+
+export const loadTodos = createAction(
+  '[Todos] Load Todo',
+  props<{ todos: Todo[] }>()
+);

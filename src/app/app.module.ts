@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from "@angular/common/http";
@@ -9,6 +10,8 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { TodosReducer } from './store/reducers/todo.reducers';
 import { TodoComponent } from './todo/todo.component';
+import { EffectsModule } from '@ngrx/effects';
+import { TodoEffects } from './store/effects/todo.effect';
 
 
 @NgModule({
@@ -27,6 +30,7 @@ import { TodoComponent } from './todo/todo.component';
     StoreDevtoolsModule.instrument({
       maxAge: 25
     }),
+    EffectsModule.forRoot([TodoEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]

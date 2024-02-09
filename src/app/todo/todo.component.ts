@@ -1,14 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Todo } from '../model/todo.model';
 import { Store } from '@ngrx/store';
-import { addTodo , removeTodo, toggleTodo} from '../store/actions/todo.actions';
+import { addTodo , loadTodos, removeTodo, toggleTodo} from '../store/actions/todo.actions';
 
 @Component({
   selector: 'app-todo',
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.css'],
 })
-export class TodoComponent {
+export class TodoComponent implements OnInit{
   newTodoTitle: string = '';
   todos$!: Todo[];
 
@@ -17,6 +17,10 @@ export class TodoComponent {
       this.todos$ = todosState.todos;
       console.log(this.todos$);
     });
+   }
+
+   ngOnInit(){
+    this.store.dispatch(loadTodos({todos: this.todos$}));
    }
   addTodo() {
     if(this.newTodoTitle.trim()===''){
